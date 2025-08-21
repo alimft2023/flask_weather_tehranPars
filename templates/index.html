@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}weatherInfo{% endblock title %}
+
+{% block bgcolor %}skyblue{% endblock bgcolor %}
+
+{% block content %}
+<form action="" method='post'>
+<input type="text" name="city" placeholder="enter city:" required>
+<input type="submit">
+</form>
+{% if res %}
+<p> temperature : {{res.main.temp}} </p>
+<p>pressure : {{res.main.pressure}}</p>
+<p>humidity: {{res.main.humidity}}</p>
+<p>descrition: {{res.weather.0.description}}</p>
+
+<img src="https://openweathermap.org/img/wn/{{ res.weather.0.icon }}@2x.png">
+
+{% endif %}
+
+{% if error %}
+<p> {{error}} </p>
+{% endif %}
+{% endblock content %}
